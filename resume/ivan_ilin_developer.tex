@@ -1,0 +1,257 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[russian,english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generated PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+% Detailed item: title + description, problem, result and tech stack each on its own line.
+\newcommand{\resumeItemDetailed}[5]{
+  \item\small{
+    \textbf{#1}: #2 \\[3pt]
+    \textit{Проблема}: #3 \\[3pt]
+    \textit{Результат}: #4 \\[3pt]
+    \textit{Стек}: #5
+    \vspace{-2pt}
+  }
+}
+
+% Summary item: title + what you did + result. Use for cross-cutting contributions
+% like mentorship, processes, on-call, team culture -- where "problem"/"stack" don't apply.
+\newcommand{\resumeSummary}[3]{
+  \item\small{
+    \textbf{#1}: #2 \\[3pt]
+    \textit{Результат}: #3
+    \vspace{-2pt}
+  }
+}
+
+% Just in case someone needs a heading that does not need to be in a list
+\newcommand{\resumeHeading}[4]{
+    \begin{tabular*}{0.99\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small #3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small #1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeItemPlain}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}l}
+  \textbf{\href{https://vanya.space/}{\Large Иван Ильин}} & Email: \href{mailto:buran05@icloud.com}{buran05@icloud.com}\\
+  \href{https://vanya.space/}{vanya.space} & Mobile: \href{tel:+79033459111}{+7-903-345-9111} \\
+   & Github: \href{https://github.com/avalanche05}{@avalanche05} \\
+   & Telegram: \href{https://t.me/avalanche05}{@avalanche05} \\
+\end{tabular*}
+
+%--------SKILLS------------
+\section{Навыки}
+ \resumeSubHeadingListStart
+   \item{
+     \textbf{Языки}{: Python, Golang, C++, SQL}
+     \hfill
+     \textbf{Технологии}{: S3, Kafka, PostgreSQL, ClickHouse, Docker, Kubernetes}
+   }
+ \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+\section{Опыт работы}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Яндекс, Автономный Транспорт}{Москва, Россия}
+      {Разработчик}{Сентябрь 2023 -- Сейчас}
+      \resumeItemListStart
+        \resumeItemDetailed{Система для записи данных с автономных машин}
+          {Внедрил набор сервисов для записи данных с разных устройств в сети автономной машины.}
+          {Внутри машины находится несколько компьютеров, которые суммарно генерируют поток данных ~500ГБ/час. Выгружать такой объём данных с машины занимает несколько часов.}
+          {Съёмное устройство, которое позволяет записывать данные со всех устройств по сети. Это уменьшило простой машин с 4-х часов до 15-и минут в день.}
+          {Клиент и сервер написаны на C++ с использованием Async Callback gRPC. Сервисы для отправки метаданных в облака и реализации fallback сценариев написаны на Go.}
+        \resumeItemDetailed{Сервис для экстренного просмотра видео с автономной машины}
+          {Разработал приложение для просмотра видео с машины в ситуациях, когда основной вычислитель машины повреждён.}
+          {При повреждени основного компьютера на машине во время аварии, процесс получения видео занимает много времени и ручных действий}
+          {Приложение, которое позволяет подключиться к хранилищу данных ноутбуком напрямую и прямо на месте инцидента получить видео с камер машины. Время получения видео сократилось с ~12 часов до 10-30 минут.}
+          {Приложение читает rosbag-и, в которых записан h265 поток видео, с помощью ffmpeg это собирается в mp4 видео. Сервер преобразования видео написан на Go. Клиент: html templates + bootstrap с ванильным js.}
+        \resumeItemDetailed{Obsevrability систем команды}
+          {Настроил отправку метрик и алёрты.}
+          {Тысячи устройств для записи данных, состояние работы каждого из них необходимо отслеживать и вовремя реагировать на проблемы.}
+          {Дашборды, метрики и алёрты для отслеживания состояния работы устройств и сервисов на них.}
+          {Все метрики отправляются в Яндексовый аналог Prometheus, отрисовываются в DataLens, алёрты настроены в Яндексовом аналоге Grafana.}
+        \resumeItemDetailed{Сервис для контроля данных на флоте автономных машин}
+          {Расширил функциональность: добавил логику сохранения данных при смене локации для конкретного робота, улучшил UI для настройки конфигов.}
+          {При смене локации робота-доставщика требовалось ручное вмешательство. Редактирование конфигов было неудобным, приходилось копировать конфиг в сторонние редакторы.}
+          {Придумал и реализовал логику работы сервиса при смене локации робота-доставщика. Подключил плагин для корректного отображения yaml конфигов. Запуск новых локаций стал независимым от сервиса, время редактирования конфигов сократилось с 10 минут до 1 минуты.}
+          {Бэкенд управления написан на Python Django. Метаданные хранятся в PostgreSQL с master/replica-роутингом,
+          аналитика событий в ClickHouse.}
+        \resumeSummary{Менторство}
+          {менторил 3 стажёров, учил разработчиков проводить собесеодвания}
+          {все стажёры были рекомендованы в штат, 1 стажёр остался в моей команде и дорос до middle, разработчики, которых я менторил, успешно проводят собеседования}
+        \resumeSummary{Собеседования}
+          {провожу технические и алгоритмические собеседования на Go и Python, собеседую стажёров в нашу команду}
+          {есть кандидаты, которых наняли в нашу команду}
+        \resumeSummary{Работа с командой}
+          {вел проект от старта до запуска, в проекте было задействовано 3 разработчика. В процессе взаимодействовал со смежными менеджерами, пользователями и заказчиками, составлял план для разработчиков}
+          {запустил большой проект, который используется на всех новых автономных грузовиках и такси Яндекса}
+      \resumeItemListEnd
+
+      \resumeSubheading
+      {Школа программирования NlogN}{Москва, Россия}
+      {Python Разработчик}{Июнь 2022 -- Сентябрь 2023}
+      \resumeItemListStart
+        \resumeItemDetailed{Платформа для сдачи заданий}
+          {Разработал платформу для сдачи заданий: для ученика и для проверяющего.}
+          {Ученики отправляли решения задач в личные сообщения преподавателю. Контроль вёлся с помощью google таблиц.}
+          {TG-бот для ученика и проверяющего, где можно посмотреть список невыполненных заданий и отправить решение задачи. Автоматически обновляемая таблица с результатми и рейтингом всех учеников.}
+          {Для ботов использовался python aiogram, для работы с google таблицами использовался google-api-python-client.}
+        \resumeItemDetailed{Корпоративный мессенджер}
+          {Развернул и поддерживал RocketChat.}
+          {Не у всех детей есть младших классов есть телеграм. При большом количестве групп в TG-аккаунте преподавателя начинается неразбериха.}
+          {Развернул RocketChat, перевёл взаимодействие туда. Добавил генерацию логинов и паролей для новых учеников, перевел TG ботов в RocketChat.}
+          {Взаимодействие с API RocketChat из Python с помощью \texttt{rocketchat\_API}.}
+        \resumeItemDetailed{Obsevrability систем команды}
+          {Настроил отправку метрик и алёрты.}
+          {Тысячи устройств для записи данных, состояние работы каждого из них необходимо отслеживать и вовремя реагировать на проблемы.}
+          {Дашборды, метрики и алёрты для отслеживания состояния работы устройств и сервисов на них.}
+          {Все метрики отправляются в Яндексовый аналог Prometheus, отрисовываются в DataLens, алёрты настроены в Яндексовом аналоге Grafana.}
+        \resumeItemDetailed{Сервис для контроля данных на флоте автономных машин}
+          {Расширил функциональность: добавил логику сохранения данных при смене локации для конкретного робота, улучшил UI для настройки конфигов.}
+          {При смене локации робота-доставщика требовалось ручное вмешательство. Редактирование конфигов было неудобным, приходилось копировать конфиг в сторонние редакторы.}
+          {Придумал и реализовал логику работы сервиса при смене локации робота-доставщика. Подключил плагин для корректного отображения yaml конфигов. Запуск новых локаций стал независимым от сервиса, время редактирования конфигов сократилось с 10 минут до 1 минуты.}
+          {Бэкенд управления написан на Python Django. Метаданные хранятся в PostgreSQL с master/replica-роутингом,
+          аналитика событий в ClickHouse.}
+        \resumeSummary{Менторство}
+          {при увольнении онбордил нового сотрудника, заменяющего меня}
+          {новый сотрудник продолжил поддерживать существующие сервисы}
+      \resumeItemListEnd
+
+      \resumeSubheading
+      {Яндекс Облако, Маркетплейс}{Москва, Россия}
+      {Стажёр-разработчик}{Октябрь 2022 -- Апрель 2023}
+      \resumeItemListStart
+        \resumeItemDetailed{Публикация OS-продуктов}
+          {Реализовал пайп сборки и выкладки образов, написал документацию по процессу.}
+          {Публикация партнёрских образов делалась вручную и требовала помощи команды.}
+          {Публикация продукта самостоятельно через единый пайп.}
+          {Python, Packer, Salt}
+        \resumeItemDetailed{Расширение API сервиса}
+          {Добавил валидацию запросов и новый тип поля, провёл миграцию БД с бэкфиллом исторических данных.}
+          {Часть полей не валидировалась; для нового функционала нужен был столбец с пересчётом старых строк.}
+          {Некорректные запросы отбрасываются до бизнес-логики; миграция заполнила все исторические строки.}
+          {Python, PostgreSQL}
+        \resumeItemDetailed{Эксплуатация и observability}
+          {Завёл monrun-проверку в Salt-формулу и добавил команду в Go CLI команды.}
+          {На стендах не было автоматической проверки нужного состояния; типовой запрос делался руками.}
+          {Проблемы ловятся автоматически; типовой запрос делается одним вызовом из терминала.}
+          {Go, monrun, Salt}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Выступления/Лекции}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Центральный Университет}
+      {Веду курс по продуктовой разработке}
+    \resumeSubItem{Яндекс.Железо}
+      {Рассказывал про эволюцию продуктов нашей команды: \href{https://youtu.be/yXUiDlOObgo}{\underline{youtube}}}
+    \resumeSubItem{Школа Бэкенд Разработки Яндекса}
+      {Прочитал лекцию про дебаг логгирование и профилирование на python}
+  \resumeSubHeadingListEnd  
+
+%-----------PROJECTS-----------------
+\section{Проекты}
+  \resumeSubHeadingListStart
+    \resumeSubItem{Outline Work}
+      {Сервис для написания конспектов. Релизовал приложение для работников и администраторов.}
+    \resumeSubItem{Стоматология}
+      {Разработал админку для автоматической работы со страховыми компаниями.}
+    \resumeSubItem{TG-бот для получения кадастровой информации}
+      {Разработал бота для получения кадастровой информации из Росреестра.}
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------------
+\section{Образование}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Университет МИСИС}{Москва, Россия}
+      {ИВТ, Бакалавриат}{2022 -- 2026}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}

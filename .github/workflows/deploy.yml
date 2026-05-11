@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
 
 on:
   push:
@@ -20,13 +20,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate HTML
+      - name: Compile resume PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: resume
+          root_file: ivan_ilin_developer.tex
+
+      - name: Validate index.html
         run: |
           test -f index.html || { echo "index.html missing"; exit 1; }
-          python3 -c "import html.parser, sys; \
-            p = html.parser.HTMLParser(); \
-            p.feed(open('index.html', encoding='utf-8').read()); \
-            print('index.html parsed OK')"
+          test -f resume/ivan_ilin_developer.pdf || { echo "resume PDF missing"; exit 1; }
 
       - uses: actions/configure-pages@v5
 

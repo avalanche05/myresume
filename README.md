@@ -5,7 +5,7 @@
 ## Структура
 
 - `index.html` — единственная страница сайта (адаптивная, без библиотек)
-- `resume/` — резюме: `resume.tex` (исходник) и `resume.pdf` (собранный файл)
+- `resume/` — резюме: `ivan_ilin_developer.tex` (исходник) и `ivan_ilin_developer.pdf`. CI пересобирает PDF из `.tex` перед деплоем.
 - `.github/workflows/deploy.yml` — пайплайн деплоя
 
 ## Локально
@@ -24,4 +24,4 @@ python3 -m http.server 8000
 
 ## Обновление резюме
 
-См. `resume/README.md`. После пересборки PDF нужно закоммитить.
+Редактируй `resume/ivan_ilin_developer.tex` — CI пересоберёт PDF при пуше. Локально можно собрать через `cd resume && ./build.sh` (Docker) или `pdflatex ivan_ilin_developer.tex`.
